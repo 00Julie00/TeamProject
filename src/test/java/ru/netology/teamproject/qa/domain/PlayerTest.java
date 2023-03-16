@@ -37,11 +37,24 @@ public class PlayerTest {
         player.installGame(two);
         player.play(game, 3);
         player.play(one, 1);
-        player.play(two, 3);
-        player.play(game, 2);
+        player.play(two, 4);
 
-        int expected = 8;
-        int actual = player.sumGenre("Аркады");
+        int expected = 7;
+        int actual = player.sumGenre(game.getGenre());
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldSumGenreIfGameReplay() {
+        Player player = new Player("Oleg");
+        player.installGame(one);
+        player.installGame(six);
+        player.installGame(four);
+
+        player.play(four, 5);
+        player.play(four, 4);
+
+        int expected = 9;
+        int actual = player.sumGenre("Стратегия");
         assertEquals(expected, actual);
     }
 
@@ -58,7 +71,7 @@ public class PlayerTest {
         player.play(five, 1);
 
         Game expected = two;
-        Game actual = player.mostPlayerByGenre("Аркады");
+        Game actual = player.mostPlayerByGenre("Mortal Kombat");
         assertEquals(expected, actual);
     }
 
@@ -72,7 +85,7 @@ public class PlayerTest {
         player.play(three, 2);
 
         Game expected = null;
-        Game actual = player.mostPlayerByGenre("Шутер");
+        Game actual = player.mostPlayerByGenre("Witcher");
         assertEquals (expected, actual);
     }
 
@@ -82,6 +95,15 @@ public class PlayerTest {
         String expected = "Gena";
         assertEquals(expected, player.getName());
 
+    }
+
+    @Test
+    void exceptionIfGameNotInstall(){
+        Player player = new Player("Gena");
+
+        assertThrows(RuntimeException.class, () ->{
+        player.play(two, 4);
+        });
     }
 
 }
