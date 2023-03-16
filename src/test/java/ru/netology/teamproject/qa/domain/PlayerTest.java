@@ -71,7 +71,7 @@ public class PlayerTest {
         player.play(five, 1);
 
         Game expected = two;
-        Game actual = player.mostPlayerByGenre("Mortal Kombat");
+        Game actual = player.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
 
@@ -85,7 +85,7 @@ public class PlayerTest {
         player.play(three, 2);
 
         Game expected = null;
-        Game actual = player.mostPlayerByGenre("Witcher");
+        Game actual = player.mostPlayerByGenre("РПГ");
         assertEquals (expected, actual);
     }
 
