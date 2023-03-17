@@ -20,12 +20,16 @@ public class Player {
     }
 
     public int play(Game game, int hours) throws RuntimeException {
+        if (game == null || game.getStore() == null) {
+            throw new NullPointerException("Game or store is null");
+        }
         game.getStore().addPlayTime(name, hours);
         if (playedTime.containsKey(game)) {
             playedTime.put(game, playedTime.get(game) + hours); //добавила часы чтобы прибавлялись предыдущие
         } else {
+            playedTime.put(game, hours);
             throw new RuntimeException
-                    ("The game" + game.getTitle() + "is not installed by player" + this.name);
+                    ("The game " + game.getTitle() + " is not installed by player " + this.name);
         }
         return playedTime.get(game);
     }

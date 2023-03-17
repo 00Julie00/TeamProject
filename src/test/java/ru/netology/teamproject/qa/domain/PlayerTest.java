@@ -82,10 +82,11 @@ public class PlayerTest {
         player.installGame(game);
         player.installGame(three);
         player.play(game, 3);
+        player.play(three, 2);
 
 
         Game expected = null;
-        Game actual = player.mostPlayerByGenre("РПГ");
+        Game actual = player.mostPlayerByGenre("Приключения");
         assertEquals (expected, actual);
     }
 
