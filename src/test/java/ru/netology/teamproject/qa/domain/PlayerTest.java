@@ -86,7 +86,9 @@ public class PlayerTest {
 
 
         Game expected = null;
+
         Game actual = player.mostPlayerByGenre("Приключения");
+
         assertEquals (expected, actual);
     }
 
