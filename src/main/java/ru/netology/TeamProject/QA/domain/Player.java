@@ -19,10 +19,12 @@ public class Player {
         playedTime.put(game, 0);
     }
 
+
     public int play(Game game, int hours) throws RuntimeException {
         if (!playedTime.containsKey(game)) {
             throw new RuntimeException
                     ("The game " + game.getTitle() + " is not installed by player " + this.name);
+
         }
         playedTime.put(game, playedTime.get(game) + hours);
         game.getStore().addPlayTime(name, hours);
@@ -34,7 +36,7 @@ public class Player {
         for (Game game : playedTime.keySet()) {
             if (game.getGenre().equals(genre)) {
                 sum += playedTime.get(game);
-            } // убрала else чтобы счетчик не обнулялся
+            }
         }
         return sum;
     }
@@ -53,5 +55,4 @@ public class Player {
         }
         return mostGenre;
     }
-
 }
