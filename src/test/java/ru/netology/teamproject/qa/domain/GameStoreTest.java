@@ -1,5 +1,7 @@
 package ru.netology.teamproject.qa.domain;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.TeamProject.QA.domain.Game;
@@ -85,4 +87,3 @@ public class GameStoreTest {
         Assertions.assertEquals(114, result);
     }
 }
-

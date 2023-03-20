@@ -1,5 +1,7 @@
 package ru.netology.teamproject.qa.domain;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import ru.netology.TeamProject.QA.domain.Game;
 import ru.netology.TeamProject.QA.domain.GameStore;
@@ -43,6 +45,7 @@ public class PlayerTest {
         int actual = player.sumGenre(game.getGenre());
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSumGenreIfGameReplay() {
         Player player = new Player("Oleg");
@@ -84,9 +87,12 @@ public class PlayerTest {
         player.play(game, 3);
         player.play(three, 2);
 
+
         Game expected = null;
-        Game actual = player.mostPlayerByGenre("РПГ");
-        assertEquals (expected, actual);
+
+        Game actual = player.mostPlayerByGenre("Приключения");
+
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -98,12 +104,11 @@ public class PlayerTest {
     }
 
     @Test
-    void exceptionIfGameNotInstall(){
+    void exceptionIfGameNotInstall() {
         Player player = new Player("Gena");
 
-        assertThrows(RuntimeException.class, () ->{
-        player.play(two, 4);
+        assertThrows(RuntimeException.class, () -> {
+            player.play(two, 4);
         });
     }
-
 }
